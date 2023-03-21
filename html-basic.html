@@ -21,7 +21,8 @@
     <a href="http://www.JD.com" target="_blank">在新窗口打开京东</a>
     <a href="mailto:xxxx@.com">点我发邮件</a>
     <a href="#di">跳到网页底部</a>
-    <a href="http://127.0.0.1:5500/567.html" download="01.html">点我下载文件</a><br />
+    <a href="http://127.0.0.1:5500/567.html" download="01.html">点我下载文件</a
+    ><br />
     <img src="stock-photo-229389427.jpg" height="200px" width="200px" />
     <hr />
     <hr />
@@ -31,8 +32,14 @@
     <u>这个？</u>
     <i>这个？</i>
     <p>&lt;!--这段注释需要出现在页面里--></p>
-    <p>function 8()</p>
-    <p>return 8</p>
+
+    <pre>
+      <code>
+        function 8(){
+          return 8
+        }
+      </code>
+    </pre>
     <hr />
     <ul>
       <li>
@@ -54,23 +61,150 @@
     </ul>
     <hr />
     <dl>
-      <dt>班级
-        <dd>三年二班</dd>
-      </dt>
-      <dt>老师<dd>张老师</dd><dd>李老师</dd><dd>王老师</dd></dt>
-      <dt>学生<dd>小明</dd><dd>豆豆</dd></dt>
-    </dl><hr/>
-    <h2>Google搜索</h3>
-<input><button>在新窗口打开搜索结果</button><hr/>
-<dl>
-  <dt>个人信息调查表</dt>
-  <dt>性别<select></select></dt>
-  <dt>年龄</dt>
-  <dt>生日</dt>
-  <dt>生辰</dt>
-  <dt>照片</dt>
-  <dt>自我介绍</dt>
-</dl>
-<div id="di"></div>
+      <dt>班级</dt>
+      <dd>三年二班</dd>
+
+      <dt>老师</dt>
+      <dd>张老师</dd>
+      <dd>李老师</dd>
+      <dd>王老师</dd>
+      <dt>学生</dt>
+      <dd>小明</dd>
+      <dd>豆豆</dd>
+    </dl>
+    <hr />
+    <h2>Google搜索</h2>
+    <form action="https://www.google.com.hk/search" target="_blank">
+      <input type="text" name="search" />
+      <button type="submit">在新窗口打开搜索结果</button>
+    </form>
+    <hr />
+    <p>个人信息调查表</p>
+    <dl>
+      <dt>性别</dt>
+      <dd>
+        <label><input type="radio" name="gender" value="male" />男</label>
+        <label><input type="radio" name="gender" value="female" />女</label>
+      </dd>
+      <dt>年龄</dt>
+      <dd>
+        <select>
+          <option hidden value="">请选择</option>
+          <optgroup label="儿童">
+            <option value="1-6">1-6</option>
+            <option value="6-12">6-12</option>
+          </optgroup>
+          <optgroup label="青少年">
+            <option value="12-15">12-15</option>
+            <option value="15-18">15-18</option>
+          </optgroup>
+          <optgroup label="青年">
+            <option value="18-20">18-20</option>
+            <option value="20-30">20-30</option>
+          </optgroup>
+        </select>
+      </dd>
+      <dt>生日</dt>
+      <dd>
+        <input type="date" value="2021/11/04" name="birthday" />
+      </dd>
+      <dt>生辰</dt>
+      <dd>
+        <input type="time" name="birthtime" />
+      </dd>
+      <dt>照片</dt>
+      <dd>
+        <input type="file" hidden name="te" id="text" />
+        <label for="text">点我上传照片，我比文件上传按钮好看</label>
+      </dd>
+      <dt>自我介绍</dt>
+      <dd>
+        <textarea name="intro" id="" cols="30" rows="10">
+&lt;/textarea></textarea
+        >
+      </dd>
+    </dl>
+    <fieldset disabled>
+      <legend>这里全部禁用了</legend>
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+    </fieldset>
+    <button type="submit">提交</button>
+    <button type="reset">重置</button>
+    <hr />
+    <table border="1">
+      <col />
+      <col bgcolor="#990033" />
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>品名</th>
+          <th>进价</th>
+          <th>出价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>aaa</th>
+          <td>a</td>
+          <td rowspan="2">a</td>
+          <td>a</td>
+        </tr>
+        <tr>
+          <th>a</th>
+          <td>a</td>
+          <td>a</td>
+        </tr>
+        <tr>
+          <th>a</th>
+          <td>a</td>
+          <td>a</td>
+          <td>a</td>
+        </tr>
+        <tr>
+          <th>a</th>
+          <td>a</td>
+          <td>a</td>
+          <td>a</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <img
+      usemap="#coffee"
+      width="280px"
+      src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c"
+      alt="coffee"
+    />
+    <map name="coffee">
+      <area
+        shape="rect"
+        coords="70 100 300 300"
+        href="http://www.convers.com"
+        target="_blank"
+        alt=""
+      />
+      <area
+        shape="circle"
+        coords="250 250 200"
+        href="http://www.convers.com"
+        target="_blank"
+        alt=""
+      />
+    </map>
+    <hr />
+    <a target="frame1" href="http://www.mi.com">小米</a>
+    <div></div>
+    <iframe
+      name="frame1"
+      src="https://www.nodejs.org/"
+      frameborder="1"
+    ></iframe>
+    <div>aaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bbb</div>
+    <pre>aaa     bbbbb</pre>
+    <div id="di"></div>
+    <div>&gt;&gt;&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;span>&lt;/span></div>
   </body>
 </html>
