@@ -1,5 +1,26 @@
-p1,
-p2,
-p3 {
-  color: blueviolet;
+.logo {
+  background: left/cover url("/media/examples/logo.jpg");
+  display: flex;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  font: bold calc(lem+2 * (100vw-120px) / 100) "dancing script", fantasy;
+  color: #ff0083;
+  text-shadow: #000 2px 2px 0.2rem;
+}
+header > h1 {
+  margin-bottom: 0;
+}
+header > time {
+  font: italic 0.7rem sans-serif;
+}
+article {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
