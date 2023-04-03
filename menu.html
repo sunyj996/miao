@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="menu">
+      <li>
+        文件
+        <ul>
+          <li data-shortcut="Ctrl+O">
+            <span>打开</span>
+          </li>
+          <li data-shortcut="Ctrl+S"><span class="menu-text">保存</span></li>
+          <li>
+            另存为...
+            <ul>
+              <li>UTF8</li>
+              <li>GB2312</li>
+              <li>
+                UTF16-BE
+                <ul>
+                  <li>UTF8</li>
+                  <li>GB2312</li>
+                  <li>UTF16-BE</li>
+                  <li>
+                    UTF16-LE
+                    <ul>
+                      <li>UTF8</li>
+                      <li>GB2312</li>
+                      <li>UTF16-BE</li>
+                      <li>UTF16-LE</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>UTF16-LE</li>
+            </ul>
+          </li>
+          <li data-shortcut="Ctrl+S"><span class="menu-text">保存</span></li>
+          <li data-shortcut="Ctrl+XXX">
+            <span class="menu-text">关闭文件</span>
+          </li>
+        </ul>
+      </li>
+      <li>
+        编辑
+        <ul>
+          <li>增加字号</li>
+          <li>缩小字号</li>
+          <li>
+            放大
+            <ul>
+              <li>增加字号</li>
+              <li>缩小字号</li>
+              <li>放大</li>
+              <li>缩小</li>
+            </ul>
+          </li>
+          <li>缩小</li>
+        </ul>
+      </li>
+      <li>视图</li>
+      <li>帮助</li>
+    </ul>
+  </body>
+  .Switch li { clear: both; line-height: 44px; border-bottom: 1px solid #CCC;
+  list-style: none; } .Switch input { display: none } .Switch label { width:
+  52px; background: #CCC; height: 28px; border-radius: 14px; float: right;
+  margin: 8px 10px 0 0; box-shadow: 0 1px 2px rgba(0, 0, 0, .1) inset; cursor:
+  pointer; } .Switch label em { width: 26px; height: 26px; margin: 1px;
+  border-radius: 13px; box-shadow: 2px 3px 8px rgba(0, 0, 0, .1); background:
+  #FFF; background: #FFF; display: block; position: relative; left: 0px;
+  transition: 0.3s; } .Switch input:checked+label { background: #a4d714; }
+  .Switch input:checked+label em { left: 24px; }
+  -----------------------------------
+  ©著作权归作者所有：来自51CTO博客作者wx5efde04e640b7的原创作品，请联系作者获取转载授权，否则将追究法律责任
+  纯CSS实现iOS风格打开关闭选择框 https://blog.51cto.com/u_14862440/4985555
+</html>
