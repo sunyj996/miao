@@ -12,38 +12,20 @@
       html {
         box-sizing: border-box;
       }
-      .ku {
-        border: 3px solid rgba(128, 128, 128, 0.382);
-        width: 180px;
-        height: 100px;
-        border-radius: 100px;
-      }
-      .circle {
-        box-shadow: 5px 5px 10px rgba(128, 128, 128, 0.168),
-          0px -5px 10px rgba(128, 128, 128, 0.168),
-          -5px 0px 10px rgba(128, 128, 128, 0.168);
-        border-radius: 50%;
-        width: 88px;
-        height: 83px;
-        margin-left: 5px;
-        margin-top: 5px;
-        transition: margin-left 0.5s ease-out, margin-right 0.5s ease-in;
-      }
-      .ku:hover .circle {
-        margin-left: 80px;
-        margin-right: 10px;
-        transition: margin-left 0.5s ease-in, margin-right 0.5s ease-out;
-        background-color: white;
-      }
-      .ku:hover {
-        border-color: rgba(13, 255, 53, 0.911);
-        background-color: rgba(13, 255, 53, 0.911);
+      input + label{
+        border: 3px solid rgba(128, 128, 128, 0.314);
       }
     </style>
   </head>
   <body>
-    <div class="ku">
-      <div class="circle"></div>
-    </div>
+    <input type="checkbox" id="cb" />
+    <label for="cb"></label>
+    <label>
+      <span class="ball">0</span>
+      <input type="checkbox" />
+    </label>
+    <p>bbb
+      <main>aaa</main>
+    </p>
   </body>
 </html>
