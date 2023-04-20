@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小米商城</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      header {
+        width: 100%;
+        height: 40px;
+        background-color: #333;
+
+        color: #b0b0b0;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .container {
+        width: 1280px;
+        margin: 0 auto;
+      }
+      .shop {
+        height: 22px;
+        width: 22px;
+      }
+      .header-left {
+        float: left;
+        list-style: none;
+      }
+      .header-right {
+        float: right;
+        list-style: none;
+      }
+      header li {
+        float: left;
+        position: relative;
+        margin-right: 8px;
+      }
+      header a {
+        color: #b0b0b0;
+        text-decoration: none;
+      }
+      header a:hover {
+        color: #fff;
+      }
+      header span {
+        color: #424242;
+        margin: 0 3.6px;
+      }
+      .download {
+        width: 124px;
+        height: 0;
+        background-color: #fff;
+        box-shadow: 0 1px 5px #ccc;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        margin-left: -62px;
+        overflow: hidden;
+        transition: all 0.3s;
+        z-index: 900;
+      }
+      .download img {
+        width: 90px;
+        margin: 18px 0 3px 0;
+      }
+      .download p {
+        font-size: 14px;
+        color: #333;
+        line-height: 0;
+      }
+      .header-left > li:hover > .download {
+        height: 148px;
+      }
+      .box {
+        width: 0px;
+        height: 0px;
+        /*  border-top: 10px solid red; */
+        border-left: 10px solid transparent;
+        border-bottom: 8px solid #fff;
+        border-right: 10px solid transparent;
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        margin-left: -8px;
+        display: none;
+      }
+      .header-left > li:hover > .box {
+        display: block;
+      }
+      .nav {
+        width: 100%;
+        height: 100px;
+        background-color: #fff;
+        position: relative;
+      }
+      .logo {
+        width: 62px;
+        height: 56px;
+        background-color: #fff;
+        float: left;
+        margin-top: 22px;
+        margin-left: 35px;
+      }
+      .search {
+        width: 296px;
+        height: 50px;
+        background-color: #fff;
+        float: left;
+        margin-top: 25px;
+        position: relative;
+      }
+      .bar {
+        width: 740px;
+        height: 100px;
+        background-color: #fff;
+        float: left;
+        padding-left: 145px;
+      }
+      .bar ul {
+        list-style: none;
+      }
+      .bar > ul > li {
+        float: left;
+        padding: 22px 11px;
+      }
+      .bar a {
+        text-decoration: none;
+        color: #333;
+      }
+      .bar a:hover {
+        color: #ff6700;
+      }
+      .logo img {
+        width: 56px;
+      }
+      /*  .logo img:hover {
+        transform: translateX(-3px);
+      } */
+      .search > input {
+        width: 220px;
+        height: 50px;
+        border: 1px solid #e0e0e0;
+        border-right: none;
+        padding: 0 10px;
+        float: left;
+        outline: none;
+        transition: all 0.2s;
+      }
+      .search > a {
+        width: 50px;
+        height: 50px;
+        float: left;
+        border: 1px solid #e0e0e0;
+        transition: all 0.2s;
+      }
+      .search > a:hover {
+        background-color: #ff6700;
+        border-color: #ff6700;
+        color: #fff;
+      }
+      .search > input:hover,
+      .search > input:hover + a {
+        border-color: #b0b0b0;
+      }
+      .search > input:focus,
+      .search > input:focus + a {
+        border-color: #ff6700;
+      }
+      .search-list {
+        width: 240px;
+        height: 241px;
+        border: 1px solid #ff6700;
+        border-top: none;
+        background-color: #fff;
+        position: absolute;
+        top: 52px;
+        left: 0;
+        z-index: 800;
+        display: none;
+      }
+      .search > input:focus ~ .search-list {
+        display: block;
+      }
+      .search-list > a {
+        width: 240px;
+        height: 25px;
+        padding: 3px 15px;
+        display: block;
+        text-decoration: none;
+        color: #424242;
+        font-size: 12px;
+        text-align: left;
+      }
+
+      .bar-list {
+        width: 100%;
+        height: 230px;
+        background-color: #fff;
+        border-top: 1px solid #e0e0e0;
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.18);
+        position: absolute;
+        left: 0px;
+        top: 100px;
+        transition: all 0.3s;
+        display: none;
+        z-index: 850;
+      }
+      .bar li:hover > .bar-list {
+        display: block;
+      }
+      .bar-list li {
+        width: 204px;
+        /* height: 194px;
+        background-color: #fff; */
+        padding-top: 30px;
+        float: left;
+      }
+      .img-box {
+        width: 100%;
+        height: 132px;
+        border-right: 1px solid #e0e0e0;
+      }
+      .bar-list li:last-child .img-box {
+        border-right: none;
+      }
+      .bar-list li img {
+        width: 180px;
+        height: 120px;
+        margin-bottom: 16px;
+      }
+      .bar-list li p {
+        font-size: 12px;
+        text-align: center;
+        margin-left: -18px;
+      }
+      .p-font {
+        color: #333;
+      }
+      .font-p {
+        color: #ff6700;
+      }
+      .banner {
+        width: 100%;
+        height: 460px;
+        margin-left: 35px;
+      }
+      .banner-box {
+        width: 1240px;
+        height: 460px;
+
+        background-image: url("image/6b996f91f354815eb138d63f2e7e9391.jpg");
+        background-size: 100%;
+        animation: banner 8s linear infinite;
+      }
+      .banner-box:hover {
+        animation-play-state: paused;
+      }
+      @keyframes banner {
+        0% {
+          background-image: url("image/6b996f91f354815eb138d63f2e7e9391.jpg");
+        }
+        50% {
+          background-image: url("image/d859460cb0ef6bd5919675840a8bf5f4.webp");
+        }
+        75% {
+          background-image: url("image/ff81b5f29bd1681c0a2c6df883d14d38.webp");
+        }
+        100% {
+          background-image: url("image/46d41dd62cff2259e56e678205616e0f.webp");
+        }
+      }
+      .slide {
+        width: 234px;
+        height: 460px;
+        background-color: #b7adad81;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .banner > .container {
+        position: relative;
+      }
+      .slide ul li a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .slide > ul > li {
+        height: 42px;
+
+        line-height: 42px;
+        text-align: left;
+        list-style: none;
+      }
+      .slide > ul > li:hover {
+        background-color: #ff6700;
+      }
+      .slide-list {
+        width: 992px;
+        height: 457px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-left: none;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+        position: absolute;
+        top: 0;
+        left: 235px;
+        padding-top: 2px;
+        display: none;
+        z-index: 700;
+      }
+      .slide li:hover > .slide-list {
+        display: block;
+      }
+      .slide-list > ul {
+        width: 200px;
+        list-style: none;
+        float: left;
+        padding-top: 12px;
+      }
+      .slide-list li {
+        width: 100%;
+        height: 68px;
+        padding: 3px 0 3px 20px;
+      }
+      .slide-list li img {
+        width: 55px;
+        height: 35px;
+        float: left;
+      }
+      .slide-list li span {
+        color: #333;
+        font-size: 13px;
+      }
+      .slide-list li:hover span {
+        color: #ff6700;
+      }
+      .slide-list1 {
+        width: 750px;
+      }
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        margin-top: -35px;
+        width: 41px;
+        height: 69px;
+        background-image: url("image/icon-slides.png");
+        cursor: pointer;
+      }
+      .prev {
+        left: 234px;
+        background-position: -83px;
+      }
+      .prev:hover {
+        background-position: 0;
+      }
+      .next {
+        right: 40px;
+        background-position: -123px;
+      }
+      .next:hover {
+        background-position: -42px;
+      }
+      .adv {
+        width: 100%;
+        height: 170px;
+        margin: 14px 0 26px;
+      }
+      .adv-aside {
+        width: 233px;
+        height: 170px;
+        padding: 3px;
+        margin-left: 35px;
+        background-color: #5f5750;
+        float: left;
+        box-sizing: border-box;
+      }
+      .adv-img {
+        width: 322px;
+        height: 170px;
+
+        float: left;
+        margin-left: 14px;
+        transition: all 0.2s linear;
+      }
+      .adv-img img {
+        width: 100%;
+        height: 100%;
+      }
+      .adv-img:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+      }
+      .adv-aside ul {
+        list-style: none;
+        margin-left: -43px;
+        margin-top: -2px;
+      }
+      .adv-aside li {
+        color: #fff;
+        font-size: 11px;
+        float: left;
+        width: 76px;
+        height: 83px;
+        padding-left: 22px;
+        padding-top: 30px;
+
+        box-sizing: border-box;
+        position: relative;
+      }
+      .adv-aside li > p {
+        opacity: 0.7;
+        transition: all 0.2s;
+      }
+      .adv-aside li > p:hover {
+        opacity: 1;
+      }
+      .row::after {
+        content: "";
+        height: 1px;
+        width: 64px;
+        background-color: #665e57;
+        position: absolute;
+        bottom: 0;
+        left: 13px;
+      }
+      .col::before {
+        content: "";
+        width: 1px;
+        height: 68px;
+        position: absolute;
+        top: 6px;
+        right: -8px;
+        background-color: #665e57;
+      }
+      .con {
+        width: 100%;
+        background-color: #f5f5f5;
+        padding: 4px 0 12px;
+      }
+      .home-banner-box {
+        width: 1240px;
+        height: 120px;
+        margin: 22px 0;
+        box-sizing: border-box;
+      }
+      .home-banner-box img {
+        width: 100%;
+        margin-left: 35px;
+      }
+      .title {
+        color: #333;
+        font-size: 22px;
+        font-weight: 200;
+        margin-left: 35px;
+        text-align: left;
+        line-height: 58px;
+      }
+      .more {
+        float: right;
+        text-decoration: none;
+        font-size: 16px;
+        color: #665e57;
+      }
+      .more:hover {
+        color: #ff6700;
+      }
+      .more > i {
+        width: 12px;
+        height: 12px;
+        padding: 3px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: #b0b0b0;
+        /*  line-height: 12px; */
+        margin-left: 6px;
+        margin-bottom: -3px;
+        transition: all 0.3s;
+      }
+      .more:hover > i {
+        background-color: #ff6700;
+      }
+      .home-box {
+        width: 1245px;
+        height: 614px;
+
+        margin-left: 30px;
+      }
+      .home-box-left {
+        width: 234px;
+        height: 614px;
+        transition: all 0.2s linear;
+        float: left;
+      }
+      .home-box-left:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px);
+      }
+      .home-box-left img {
+        width: 100%;
+        height: 100%;
+      }
+      .home-box-right {
+        width: 1011px;
+        height: 614px;
+
+        float: left;
+      }
+      .item {
+        width: 238px;
+        height: 300px;
+        background-color: #fff;
+        float: left;
+        margin-bottom: 14px;
+        margin-left: 14px;
+        transition: all 0.2s linear;
+      }
+      .item:hover,
+      .ele-item:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        transform: translatey(-3px);
+      }
+      .item a,
+      .ele-item a {
+        text-decoration: none;
+        text-align: center;
+      }
+      .img1 {
+        width: 160px;
+        margin-top: 20px;
+        margin-left: 40px;
+      }
+      .name2 {
+        width: 214px;
+        height: 21px;
+        margin: 0 auto;
+        font-size: 14px;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #333;
+      }
+      .name3 {
+        width: 214px;
+        height: 18px;
+        line-height: 18px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: #b0b0b0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .name4 {
+        color: #ff6700;
+        font-size: 14px;
+      }
+      .name4 > del {
+        color: #b0b0b0;
+        margin-left: 7px;
+      }
+      .ele-item {
+        width: 235px;
+        height: 300px;
+        background-color: #fff;
+        float: left;
+        margin-bottom: 14px;
+        margin-left: 14px;
+        transition: all 0.2s linear;
+      }
+      .img2 {
+        width: 100%;
+        height: 100%;
+      }
+      .the-img {
+        width: 1236px;
+        margin-left: 42px;
+        margin-top: 20px;
+      }
+      .site-footer {
+        width: 100%;
+        height: 332px;
+        /*  background-color: red; */
+      }
+      .site-info {
+        width: 100%;
+        height: 206px;
+        padding: 30px 0;
+        background-color: pink;
+      }
+      .footer-service {
+        width: 1236px;
+        margin-left: 42px;
+        height: 25px;
+        padding: 27px 0;
+        border-bottom: 1px solid #e0e0e0;
+        margin-top: 20px;
+      }
+      .footer-service ul {
+        list-style: none;
+        margin: 20px 43px;
+      }
+      .footer-service li {
+        float: left;
+        width: 210px;
+        height: 60px;
+
+        padding: 20px 0;
+        text-decoration: none;
+        margin-top: -43px;
+        text-align: center;
+      }
+
+      .footer-service a {
+        text-decoration: none;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <ul class="header-left">
+          <li><a href="#">小米官网</a><span>|</span></li>
+          <li><a href="#">小米商城</a><span>|</span></li>
+          <li><a href="#">MIUI</a><span>|</span></li>
+          <li><a href="#">IoT</a><span>|</span></li>
+          <li><a href="#">云服务</a><span>|</span></li>
+          <li><a href="#">天星科技</a><span>|</span></li>
+          <li><a href="#">有品</a><span>|</span></li>
+          <li><a href="#">小爱开放平台</a><span>|</span></li>
+          <li><a href="#">企业团购</a><span>|</span></li>
+          <li><a href="#">资质证照</a><span>|</span></li>
+          <li>
+            <a href="#">下载APP</a><span>|</span>
+            <div class="download">
+              <a href=""
+                ><img src="image\download.png" alt="" />
+                <p>小米商城APP</p></a
+              >
+            </div>
+            <div class="box"></div>
+          </li>
+          <li><a href="#">品质生活</a><span>|</span></li>
+          <li><a href="#">select location</a></li>
+        </ul>
+        <ul class="header-right">
+          <li><a href="#">登录</a><span>|</span></li>
+          <li><a href="#">注册</a><span>|</span></li>
+          <li><a href="#">消息通知</a><span>|</span></li>
+          <li>
+            <a href="#">购物车(0)</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="nav">
+      <div class="container">
+        <div class="logo">
+          <a href="#"><img src="image\favicon.ico" alt="" /></a>
+        </div>
+        <div class="bar">
+          <ul>
+            <li>
+              <a href="#">xiaomi手机</a>
+              <div class="bar-list">
+                <div class="container">
+                  <ul>
+                    <li>
+                      <a href="#"
+                        ><div class="img-box">
+                          <img
+                            src="image\c758eb7e0dce4307c62c47155519bc80.webp"
+                            alt=""
+                          />
+                        </div>
+                        <p class="p-font">Xiaomi 13</p>
+                        <p class="font-p">3399元起</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><div class="img-box">
+                          <img
+                            src="image\4ef3713521fb9d7f114aa8bb152e220d.webp"
+                            alt=""
+                          />
+                        </div>
+                        <p class="p-font">Xiaomi 13Pro</p>
+                        <p class="font-p">3399元起</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><div class="img-box">
+                          <img
+                            src="image\9c06f92c3216c90a566916e719935018.webp"
+                            alt=""
+                          />
+                        </div>
+                        <p class="p-font">Xiaomi 13青春限定色</p>
+                        <p class="font-p">4399元起</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><div class="img-box">
+                          <img
+                            src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                            alt=""
+                          />
+                        </div>
+                        <p class="p-font">Xiaomi 13活力版</p>
+                        <p class="font-p">3199元起</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><div class="img-box">
+                          <img
+                            src="image\581f3a690e6803add02e4c9fde98cb78.webp"
+                            alt=""
+                          />
+                        </div>
+                        <p class="p-font">Xiaomi Fold</p>
+                        <p class="font-p">4099元起</p></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><div class="img-box">
+                          <img
+                            src="image\fea69fb5990da9dfc909aa8279aaea7e.webp"
+                            alt=""
+                          />
+                        </div>
+                        <p class="p-font">Xiaomi 尊享版</p>
+                        <p class="font-p">6099元起</p></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">redmi手机</a></li>
+            <li><a href="#">笔记本</a></li>
+            <li><a href="#">家电</a></li>
+            <li><a href="#">电视</a></li>
+            <li><a href="#">平板</a></li>
+            <li><a href="#">路由器</a></li>
+            <li><a href="#">服务中心</a></li>
+            <li><a href="#">社区</a></li>
+          </ul>
+        </div>
+        <div class="search">
+          <input type="text" />
+          <div class="search-list">
+            <a href="#">全部商品</a><a href="#">空调</a><a href="#">小米11</a
+            ><a href="#">小米手机</a><a href="#">红米</a><a href="#">小米10</a
+            ><a href="#">黑鲨4</a><a href="#">净水机</a>
+          </div>
+          <a href="#"></a>
+        </div>
+      </div>
+    </div>
+    <div class="banner">
+      <div class="container">
+        <div class="banner-box">
+          <div class="slide">
+            <ul>
+              <li>
+                <a href="#">手机</a>
+                <div class="slide-list">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi I系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi N系列</span></a
+                      >
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi I系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi N系列</span></a
+                      >
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi I系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi N系列</span></a
+                      >
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi I系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi N系列</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="#">家电</a>
+                <div class="slide-list slide-list1">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi I系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi N系列</span></a
+                      >
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\9c06f92c3216c90a566916e719935018.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi I系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi N系列</span></a
+                      >
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi Z系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi K系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi L系列</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img
+                          src="image\11e28a0a7c6a2ca07f0dc2044d3858c2.webp"
+                          alt=""
+                        />
+                        <span>Xiaomi D系列</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="#">笔记本 平板</a></li>
+              <li><a href="#">智能穿戴</a></li>
+              <li><a href="#">健康 儿童</a></li>
+              <li><a href="#">出行 户外</a></li>
+              <li><a href="#">耳机 音箱</a></li>
+              <li><a href="#">智能 路由器</a></li>
+              <li><a href="#">电源 适配器</a></li>
+              <li><a href="#">生活 箱包</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="prev"></div>
+        <div class="next"></div>
+      </div>
+    </div>
+    <div class="adv">
+      <div class="container">
+        <div class="adv-aside">
+          <ul>
+            <li class="row col">
+              <i></i>
+              <p>企业团购</p>
+            </li>
+            <li class="row col">
+              <i></i>
+              <p>保障服务</p>
+            </li>
+            <li class="row">
+              <i></i>
+              <p>F码通道</p>
+            </li>
+            <li class="col">
+              <i></i>
+              <p>米粉卡</p>
+            </li>
+            <li class="col">
+              <i></i>
+              <p>以旧换新</p>
+            </li>
+            <li>
+              <i></i>
+              <p>话费充值</p>
+            </li>
+          </ul>
+        </div>
+        <div class="adv-img">
+          <img src="image\d7d4be1a9e701e16de498f89b1865867.jpg" alt="" />
+        </div>
+        <div class="adv-img">
+          <img src="image\6dd2f3e0de4e6cbba98fd3799cfa5bf7.jpg" alt="" />
+        </div>
+        <div class="adv-img">
+          <img src="image\0cf5e958bc88727b50c5c5fba7a8f47a.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="con">
+      <div class="container">
+        <div class="phone">
+          <div class="home-banner-box">
+            <a href="#"
+              ><img src="image\864aa0927000c3d717eca08955589d62.webp" alt=""
+            /></a>
+          </div>
+          <h2 class="title">
+            手机<a href="#" class="more">查看更多<i></i></a>
+          </h2>
+          <div class="home-box">
+            <div class="home-box-left">
+              <a href="#"
+                ><img src="image\d91bb6cf7da0947e8a6e50e03f4daf06.webp" alt=""
+              /></a>
+            </div>
+            <div class="home-box-right">
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304171459_dd35f1e6215da63c356e352d4d398ce6.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304171459_dd35f1e6215da63c356e352d4d398ce6.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\8b046feca0a7bb3f7b961a9690babb1b.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304171459_dd35f1e6215da63c356e352d4d398ce6.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\8b046feca0a7bb3f7b961a9690babb1b.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304171459_dd35f1e6215da63c356e352d4d398ce6.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304171459_dd35f1e6215da63c356e352d4d398ce6.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304171459_dd35f1e6215da63c356e352d4d398ce6.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wear">
+          <h2 class="title">智能穿戴<a href="#" class="more">耳机 穿戴</a></h2>
+          <div class="home-box">
+            <div class="home-box-left">
+              <a href="#"
+                ><img src="image\c9550c95ee33a22dc8db677dada00f09.webp" alt=""
+              /></a>
+            </div>
+            <div class="home-box-right">
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202204211417_27356c02de718e88afd3cf36eaba8097.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202204211417_27356c02de718e88afd3cf36eaba8097.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202208102330_fec8af4d5861f2c0a3fea2b8879ae859.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202204211417_27356c02de718e88afd3cf36eaba8097.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202208102330_fec8af4d5861f2c0a3fea2b8879ae859.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202304181447_fff5c19e16988b91042cfddba800fc19.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202208102330_fec8af4d5861f2c0a3fea2b8879ae859.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="item">
+                <a href="#"
+                  ><img
+                    src="image\202208102330_fec8af4d5861f2c0a3fea2b8879ae859.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ele">
+          <h2 class="title">家电<a href="#" class="more">热门 电视影音</a></h2>
+          <div class="home-box">
+            <div class="home-box-box">
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\3d47879ec183e25a36e67e0219636e60.webp"
+                    alt=""
+                    class="img2"
+                  />
+                </a>
+              </div>
+
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\202304180958_20a47c43888b873b18af2b89216e9c9d.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\363bf63e1ca2c6b21a0e5e21cd284368.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\202304180958_20a47c43888b873b18af2b89216e9c9d.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\363bf63e1ca2c6b21a0e5e21cd284368.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\65e186001431a799d30fa84359f4b84e.webp"
+                    alt=""
+                    class="img2"
+                  />
+                </a>
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\202304180958_20a47c43888b873b18af2b89216e9c9d.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\363bf63e1ca2c6b21a0e5e21cd284368.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\202304180958_20a47c43888b873b18af2b89216e9c9d.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+              <div class="ele-item">
+                <a href="#"
+                  ><img
+                    src="image\363bf63e1ca2c6b21a0e5e21cd284368.webp"
+                    alt=""
+                    class="img1"
+                  />
+                  <p class="name2">Xiaomi13 Ultra</p>
+                  <p class="name3">徕卡光学全焦段四摄</p>
+                  <p class="name4">7900元 <del>10399元</del></p></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <a href="#"
+            ><img
+              src="image\88e35cffc82cd98cd53172460067af17.webp"
+              alt=""
+              class="the-img"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="site-footer">
+        <div class="container">
+          <div class="footer-service">
+            <ul>
+              <li><a href="#">预约维修服务</a></li>
+              <li><a href="#">7天无理由退货</a></li>
+              <li><a href="#">5天免费换货</a></li>
+              <li><a href="#">满69元包邮</a></li>
+              <li><a href="#">1100余家售后网点</a></li>
+            </ul>
+          </div>
+          <div class="footer-links"></div>
+        </div>
+      </div>
+      <div class="site-info"></div>
+    </div>
+  </body>
+</html>
