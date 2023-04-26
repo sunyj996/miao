@@ -102,3 +102,66 @@
   var result = g + "" + s + "" + b + "";
   console.log(result);
 </script>
+<script id="ch0103/14">
+  var h = +prompt("输入桶的高度");
+  var r = +prompt("输入桶的底面半径");
+  var V = Math.PI * r ** 2 * h;
+  var result = Math.ceil(20000 / V);
+
+  console.log(result);
+</script>
+<script id="ch0103/15">
+  var sum = +prompt("输入苹果数量");
+  var e = +prompt("虫子几小时吃一个苹果");
+  var time = +prompt("过了多少个小时");
+  var result = sum - Math.ceil(time / e);
+
+  console.log(result);
+</script>
+<script id="ch0103/16">
+  var Xa = +prompt("输入A的横坐标");
+  var Ya = +prompt("输入A的纵坐标");
+  var Xb = +prompt("输入A的横坐标");
+  var Yb = +prompt("输入A的纵坐标");
+  var result = Math.sqrt((Xa - Xb) ** 2 + (Ya - Yb) ** 2).toFixed(3);
+
+  console.log(result);
+</script>
+<script id="ch0103/17">
+  var X1 = +prompt("输入A的横坐标");
+  var Y1 = +prompt("输入A的纵坐标");
+  var X2 = +prompt("输入B的横坐标");
+  var Y2 = +prompt("输入B的纵坐标");
+  var X3 = +prompt("输入C的横坐标");
+  var Y3 = +prompt("输入C的纵坐标");
+
+  var a = Math.sqrt((X1 - X2) ** 2 + (Y1 - Y2) ** 2);
+  var b = Math.sqrt((X1 - X3) ** 2 + (Y1 - Y3) ** 2);
+  var c = Math.sqrt((X2 - X3) ** 2 + (Y2 - Y3) ** 2);
+
+  var p = (a + b + c) / 2;
+  var S = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+  console.log(S.toFixed(2));
+</script>
+<script id="ch0103/18">
+  var a1 = +prompt("输入a1");
+  var a2 = +prompt("输入a2");
+  var num = +prompt("输入要求的项数");
+  var result = a1 + (num - 1) * (a2 - a1);
+
+  console.log(result);
+</script>
+<script id="ch0103/19">
+  var A = +prompt("输入A(小于或等于50000的正整数)");
+  var B = +prompt("输入B(小于或等于50000的正整数)");
+  var result = A * B;
+
+  console.log(result);
+</script>
+<script id="ch0103/20">
+  var n = +prompt("输入幂的次数(0~31之间)");
+  var result = Math.pow(2, n);
+
+  console.log(result);
+</script>
