@@ -315,17 +315,17 @@
   if (j == "y") {
     if (w <= 1000) {
       p += 5;
-      console.log(price);
+      console.log(p);
     } else if (w > 1000) {
       p = 8 + 5 + Math.ceil((w - 1000) / 500) * 4;
-      console.log(price);
+      console.log(p);
     }
   } else if (j == "n") {
     if (w <= 1000) {
-      console.log(price);
+      console.log(p);
     } else if (w > 1000) {
       p = 8 + Math.ceil((w - 1000) / 500) * 4;
-      console.log(price);
+      console.log(p);
     }
   }
 </script>
